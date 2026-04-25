@@ -223,7 +223,7 @@
         "type": "ExecutePipeline",
         "typeProperties": {
           "pipeline": {
-            "referenceName": "a69ff94c-9014-48d9-a762-aa24593302de",
+            "referenceName": "592635be-9979-40a3-8a91-0305b696cea2",
             "type": "PipelineReference"
           },
           "parameters": {
@@ -255,8 +255,6 @@
           "secureInput": false
         },
         "name": "Level 1 Transform SILVER",
-        "state": "Inactive",
-        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "ForEach Mirrored Table",

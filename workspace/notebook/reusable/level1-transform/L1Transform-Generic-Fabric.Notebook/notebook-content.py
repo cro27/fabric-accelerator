@@ -63,9 +63,6 @@ InputRawFileFolder = None
 InputRawFile = None
 InputRawFileDelimiter = None
 InputFileHeaderFlag = None
-InputRawTable = None
-DataFromTimestamp = None
-DataToTimestamp = None
 OutputL1CurateFileSystem = None
 OutputL1CuratedFolder = None
 OutputL1CuratedFile = None
@@ -78,6 +75,9 @@ OutputDWTable = None
 OutputDWTableWriteMode = None
 ReRunL1TransformFlag = None
 WatermarkColName = None
+InputRawTable = None
+DataFromTimestamp = None
+DataToTimestamp = None
 
 # METADATA ********************
 
@@ -89,30 +89,30 @@ WatermarkColName = None
 # CELL ********************
 
 # # Parameters for Testing only, should be commented off
-# L1TransformInstanceID = 6209
-# L1TransformID = 74
-# IngestID = 61
+# L1TransformInstanceID = 6214
+# L1TransformID = 84
+# IngestID = 57
 # CustomParameters = None
 # InputRawFileSystem = None
 # InputRawFileFolder = None
 # InputRawFile = None
 # InputRawFileDelimiter = None
 # InputFileHeaderFlag = None
-# InputRawTable = 'WideWorldImporters-mirror.Application.TransactionTypes'
-# DataFromTimestamp = '1900-01-01 00:00:00.0000000'
-# DataToTimestamp = '2026-04-25 16:07:30.0000000'
 # OutputL1CurateFileSystem = 'Tables'
 # OutputL1CuratedFolder = 'Application'
-# OutputL1CuratedFile = 'TransactionTypes'
+# OutputL1CuratedFile = 'PaymentMethods'
 # OutputL1CuratedFileDelimiter = None
 # OutputL1CuratedFileFormat = None
 # OutputL1CuratedFileWriteMode = None
 # OutputDWStagingTable = None
 # LookupColumns = None
-# OutputDWTable = 'silver.Mirror_Application_TransactionTypes'
+# OutputDWTable = 'silver.Mirror_Application_PaymentMethods'
 # OutputDWTableWriteMode = 'overwrite'
 # ReRunL1TransformFlag = None
 # WatermarkColName = None
+# InputRawTable = 'WideWorldImporters-mirror.Application.PaymentMethods'
+# DataFromTimestamp = '1900-01-01T00:00:00Z'
+# DataToTimestamp = '2026-04-25T23:53:46Z'
 
 # METADATA ********************
 
@@ -137,7 +137,7 @@ if (
     df = readFile('bronze', InputRawFileSystem, InputRawFileFolder, InputRawFile)
 
 # Input is Mirrored Table
-if (
+elif (
     InputRawFileSystem is None
     and InputRawFileFolder is None
     and InputRawFile is None
@@ -147,7 +147,6 @@ if (
     # Split the table name into database, schema, and table parts
     parts = InputRawTable.split(".")
     mirrorDBName, schemaName, tableName = parts[0], parts[1], parts[2]
-
     mirrorDBWorkspace = notebookutils.runtime.context.get("defaultLakehouseWorkspaceName")
     df = readMirrorDBTable(
         workspaceName=mirrorDBWorkspace,
@@ -156,7 +155,7 @@ if (
         tableName=tableName,
         watermarkColumnName=WatermarkColName,
         fromTimeStamp=DataFromTimestamp,
-        toTimeStamp=DataToTimestamp,
+        toTimeStamp=DataToTimestamp
     )
 
 ingestCount = df.count()
