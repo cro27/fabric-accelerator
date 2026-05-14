@@ -1,9 +1,9 @@
 name: Deploy Fabric Accelerator
 on: workflow_dispatch 
 env:
-  FABRIC_CAPACITY_NAME: fabricaccelerator
-  FABRIC_CAPACITY_LOCATION: australiaeast
-  FABRIC_CAPACITY_SKU: F2
+  FABRIC_CAPACITY_NAME: cpdemo
+  FABRIC_CAPACITY_LOCATION: westus3
+  FABRIC_CAPACITY_SKU: F4
   FABRIC_CAPACITY_ADMIN_ID: da84f06f-dc9c-4bd1-bc72-7692fa0c21b4
   RESOURCE_GROUP: Fabric
   WORKSPACE_NAME: FabricAccelerator
@@ -14,8 +14,6 @@ env:
   SILVER_LH: silver_fabric_accelerator
   GOLD_DW: gold_fabric_accelerator
   WIDE_WORLD_IMPORTERS_CONNECTION_ID: 8bdf5dc7-285d-4924-bc9e-9995a92e1b2e
-  #FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  #ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   deploy-fabric-accelerator:
