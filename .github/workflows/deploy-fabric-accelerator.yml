@@ -1,9 +1,9 @@
 name: Deploy Fabric Accelerator
 on: workflow_dispatch 
 env:
-  FABRIC_CAPACITY_NAME: crofabaccelerator
-  FABRIC_CAPACITY_LOCATION: australiaeast
-  FABRIC_CAPACITY_SKU: F2
+  FABRIC_CAPACITY_NAME: cpdemo
+  FABRIC_CAPACITY_LOCATION: westus3
+  FABRIC_CAPACITY_SKU: F4
   FABRIC_CAPACITY_ADMIN_ID: da84f06f-dc9c-4bd1-bc72-7692fa0c21b4
   RESOURCE_GROUP: Fabric
   WORKSPACE_NAME: FabricAccelerator
